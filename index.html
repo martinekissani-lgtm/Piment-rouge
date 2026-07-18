@@ -25,10 +25,6 @@ color:red;
 font-size:45px;
 }
 
-p{
-font-size:20px;
-}
-
 button{
 background:red;
 color:white;
@@ -38,12 +34,10 @@ margin:10px;
 border-radius:15px;
 font-size:20px;
 cursor:pointer;
-transition:0.3s;
 }
 
 button:hover{
 background:#ff4444;
-transform:scale(1.05);
 }
 
 .gallery{
@@ -51,14 +45,14 @@ display:none;
 padding:20px;
 }
 
-.gallery img{
+.gallery img,#galerie img{
 width:220px;
 margin:10px;
 border-radius:12px;
 }
 
 footer{
-margin-top:50px;
+margin-top:40px;
 padding:20px;
 background:#000;
 }
@@ -83,9 +77,7 @@ background:#000;
 </header>
 
 <button onclick="photos()">📸 Photos</button>
-
 <button onclick="videos()">🎥 Vidéos</button>
-
 <button onclick="contact()">📱 Contact</button>
 
 <div id="photos" class="gallery">
@@ -93,25 +85,26 @@ background:#000;
 <h2>Galerie Photos</h2>
 
 <img src="https://picsum.photos/300/400?1">
-
 <img src="https://picsum.photos/300/400?2">
-
 <img src="https://picsum.photos/300/400?3">
+
+<h2>Ajouter des photos</h2>
+
+<input type="file" id="uploadPhotos" accept="image/*" multiple>
+
+<div id="galerie"></div>
 
 </div>
 
 <div id="videos" class="gallery">
 
 <h2>Vidéos</h2>
-
 <p>Ajoute ici les liens de tes vidéos.</p>
 
 </div>
 
 <footer>
-
 © 2026 Piment-rouge
-
 </footer>
 
 </div>
@@ -133,10 +126,176 @@ document.getElementById("videos").style.display="block";
 document.getElementById("photos").style.display="none";
 }
 
-function contact(){window.open("https://wa.me/242068443539", "_blank");
+function contact(){
+window.open("https://wa.me/242068443539","_blank");
 }
+
+document.getElementById("uploadPhotos").addEventListener("change",function(e){
+
+const galerie=document.getElementById("galerie");
+galerie.innerHTML="";
+
+Array.from(e.target.files).forEach(function(file){
+
+const img=document.createElement("img");
+img.src=URL.createObjectURL(file);
+galerie.appendChild(img);
+
+});
+
+});
+
+</script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piment-rouge</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:white;
+text-align:center;
+}
+
+header{
+background:#000;
+padding:20px;
+box-shadow:0 0 15px red;
+}
+
+h1{
+color:red;
+font-size:45px;
+}
+
+button{
+background:red;
+color:white;
+border:none;
+padding:15px 30px;
+margin:10px;
+border-radius:15px;
+font-size:20px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff4444;
+}
+
+.gallery{
+display:none;
+padding:20px;
+}
+
+.gallery img,#galerie img{
+width:220px;
+margin:10px;
+border-radius:12px;
+}
+
+footer{
+margin-top:40px;
+padding:20px;
+background:#000;
+}
+</style>
+</head>
+
+<body>
+
+<div id="age">
+<h2>🔞 Accès réservé aux adultes</h2>
+<p>Vous devez avoir 18 ans ou plus.</p>
+
+<button onclick="entrer()">J'ai 18 ans ou plus</button>
+<button onclick="window.location='https://google.com'">Quitter</button>
+</div>
+
+<div id="site" style="display:none;">
+
+<header>
+<h1>🔥 Piment-rouge 🔥</h1>
+<p>Bienvenue sur mon site.</p>
+</header>
+
+<button onclick="photos()">📸 Photos</button>
+<button onclick="videos()">🎥 Vidéos</button>
+<button onclick="contact()">📱 Contact</button>
+
+<div id="photos" class="gallery">
+
+<h2>Galerie Photos</h2>
+
+<img src="https://picsum.photos/300/400?1">
+<img src="https://picsum.photos/300/400?2">
+<img src="https://picsum.photos/300/400?3">
+
+<h2>Ajouter des photos</h2>
+
+<input type="file" id="uploadPhotos" accept="image/*" multiple>
+
+<div id="galerie"></div>
+
+</div>
+
+<div id="videos" class="gallery">
+
+<h2>Vidéos</h2>
+<p>Ajoute ici les liens de tes vidéos.</p>
+
+</div>
+
+<footer>
+© 2026 Piment-rouge
+</footer>
+
+</div>
+
+<script>
+
+function entrer(){
+document.getElementById("age").style.display="none";
+document.getElementById("site").style.display="block";
+}
+
+function photos(){
+document.getElementById("photos").style.display="block";
+document.getElementById("videos").style.display="none";
+}
+
+function videos(){
+document.getElementById("videos").style.display="block";
+document.getElementById("photos").style.display="none";
+}
+
+function contact(){
+window.open("https://wa.me/242068443539","_blank");
+}
+
+document.getElementById("uploadPhotos").addEventListener("change",function(e){
+
+const galerie=document.getElementById("galerie");
+galerie.innerHTML="";
+
+Array.from(e.target.files).forEach(function(file){
+
+const img=document.createElement("img");
+img.src=URL.createObjectURL(file);
+galerie.appendChild(img);
+
+});
+
+});
 
 </script>
 
 </body>
-  </html>
+</html>
+</body>
+</html>
